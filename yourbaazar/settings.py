@@ -139,21 +139,26 @@ RATELIMIT_VIEW = "yourapp.views.ratelimit_handler"
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'yourbaazardb',  # same as schema you created
+#         'USER': 'admin',
+#         'PASSWORD': 'tarun231',
+#         'HOST': 'database-2.c3skesa0esud.ap-south-1.rds.amazonaws.com',
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#         },
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'yourbaazardb',  # same as schema you created
-        'USER': 'admin',
-        'PASSWORD': 'tarun231',
-        'HOST': 'database-2.c3skesa0esud.ap-south-1.rds.amazonaws.com',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -306,43 +311,61 @@ SHIPROCKET_DEFAULT_HEIGHT_CM = 5
 
 # Optional local fallback (sirf development ke liye)
 # AWS Credentials
-AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
-AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME")
-AWS_S3_REGION_NAME = config("AWS_S3_REGION_NAME")
+# AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
+# AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
+# AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME")
+# AWS_S3_REGION_NAME = config("AWS_S3_REGION_NAME")
 
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
 
-AWS_QUERYSTRING_AUTH = False
-AWS_S3_VERIFY = True
-AWS_S3_SIGNATURE_VERSION = "s3v4"
+# AWS_QUERYSTRING_AUTH = False
+# AWS_S3_VERIFY = True
+# AWS_S3_SIGNATURE_VERSION = "s3v4"
 
-AWS_S3_CUSTOM_DOMAIN = config("AWS_S3_CUSTOM_DOMAIN")
+# AWS_S3_CUSTOM_DOMAIN = config("AWS_S3_CUSTOM_DOMAIN")
 
-AWS_S3_CUSTOM_DOMAIN = "cdn.yourbaazar.com"
+# AWS_S3_CUSTOM_DOMAIN = "cdn.yourbaazar.com"
+
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
 
 # Custom Storages
+# STORAGES = {
+#     "default": {
+#         "BACKEND": "yourbaazar.storages_backends.MediaStorage",
+#     },
+#     "staticfiles": {
+#         "BACKEND": "yourbaazar.storages_backends.StaticStorage",
+#     },
+# }
+
+
 STORAGES = {
     "default": {
-        "BACKEND": "yourbaazar.storages_backends.MediaStorage",
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
-        "BACKEND": "yourbaazar.storages_backends.StaticStorage",
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # agar tumhara project root me static folder hai
 ]
 
 
-# URL settings
-STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
-MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
+# # URL settings
+# STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+# MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
 
-# Optional local fallback (sirf development ke liye)
-STATIC_ROOT = BASE_DIR / "staticfiles"
-MEDIA_ROOT = BASE_DIR / "mediafiles"
+# # Optional local fallback (sirf development ke liye)
+# STATIC_ROOT = BASE_DIR / "staticfiles"
+# MEDIA_ROOT = BASE_DIR / "mediafiles"
 
 
 
