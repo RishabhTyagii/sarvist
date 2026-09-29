@@ -1,0 +1,1634 @@
+
+{% extends 'base.html' %}
+{% load webp_filter %}
+{% load static %}
+
+{% block title %}Yourbaazar-India's Own Shopping Platfrom{% endblock %}
+
+{% block extra_css %}
+    <style>
+        /* Reset and Base */
+          /* Reset and Basewxx */
+        .pxoooq-category-carousel * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Main Container */
+        .pxoooq-category-carousel {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        
+        /* Carousel Wrapper */
+        .pxoooq-category-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: white;
+            padding: 15px 0;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        /* Carousel Track */
+        .pxoooq-category-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 5px 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .pxoooq-category-track::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Category Item */
+        .pxoooq-category-item {
+            flex: 0 0 auto;
+            width: 100px; /* Thoda increase kiya */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            padding: 10px 5px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .pxoooq-category-item:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        .pxoooq-category-item.active {
+            background: #f0f7ff;
+            border: 1px solid #0066ff20;
+        }
+        
+        /* Round Image Container - SIZE BADHAYA HAI */
+        .pxoooq-category-icon {
+            width: 75px;  /* 60 se 75 kiya */
+            height: 75px; /* 60 se 75 kiya */
+            min-width: 75px;
+            margin-bottom: 10px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea0d, #764ba20d);
+            border: 1.5px solid #f0f0f0;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .pxoooq-category-item:hover .pxoooq-category-icon {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+        }
+        
+        /* Image Styling - FULL IMAGE WITHOUT CROP */
+        .pxoooq-category-icon img {
+            width: 90%;  /* 100% se 90% kiya taki border dikhe */
+            height: 90%; /* 100% se 90% kiya */
+            object-fit: contain; /* contain use kiya cover ki jagah */
+            border-radius: 50%;
+            padding: 2px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        /* Category Name */
+        .pxoooq-category-name {
+            font-size: 0.8rem; /* Thoda increase */
+            font-weight: 500;
+            color: #444;
+            line-height: 1.3;
+            width: 100%;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            margin-top: 5px;
+        }
+        
+        /* Category Count */
+        .pxoooq-category-count {
+            font-size: 0.7rem;
+            color: #888;
+            margin-top: 3px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .pxoooq-category-item {
+                width: 90px;
+            }
+            
+            .pxoooq-category-icon {
+                width: 65px;
+                height: 65px;
+                min-width: 65px;
+            }
+            
+            .pxoooq-category-icon img {
+                width: 88%;
+                height: 88%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .pxoooq-category-carousel {
+                padding: 0 10px;
+            }
+            
+            .pxoooq-category-item {
+                width: 80px;
+            }
+            
+            .pxoooq-category-icon {
+                width: 60px;
+                height: 60px;
+                min-width: 60px;
+            }
+            
+            .pxoooq-category-icon img {
+                width: 85%;
+                height: 85%;
+            }
+            
+            .pxoooq-category-track {
+                gap: 15px;
+            }
+        }
+
+
+    
+ /* Main Container */
+        .new-001-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .new-001-main-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #1a1a2e;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .new-001-subtitle {
+            font-size: 1.3rem;
+            color: #666666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* BHAI - IMPROVED WOOD GRAIN BACKGROUND */
+        .new-001-gradient-section {
+            background-color: #8b7355; /* Base wood color */
+            background-image: 
+                /* Wood grain pattern layer 1 */
+                radial-gradient(circle at 10% 20%, rgba(155, 125, 95, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(175, 145, 115, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(135, 105, 75, 0.2) 0%, transparent 30%),
+                /* Wood grain lines */
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 15px,
+                    rgba(121, 99, 72, 0.1) 15px,
+                    rgba(121, 99, 72, 0.1) 16px
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(93, 75, 54, 0.15) 40px,
+                    rgba(93, 75, 54, 0.15) 41px
+                ),
+                /* Wood texture overlay */
+                linear-gradient(
+                    135deg,
+                    rgba(139, 115, 85, 0.9) 0%,
+                    rgba(121, 99, 72, 0.9) 25%,
+                    rgba(107, 87, 63, 0.9) 50%,
+                    rgba(93, 75, 54, 0.9) 75%,
+                    rgba(121, 99, 72, 0.9) 100%
+                );
+            margin: 60px 0;
+            border-radius: 40px;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(93, 75, 54, 0.6);
+        }
+
+        /* Wood Frame Effect */
+        .new-001-gradient-section::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Animated Gradient Border */
+        .new-001-gradient-section::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, 
+                #d4a574, 
+                #8b7355, 
+                #5d4b36,
+                #a99276,
+                #d4a574);
+            background-size: 400% 400%;
+            border-radius: 43px;
+            z-index: -1;
+            opacity: 0.4;
+            animation: gradientBorder 8s ease infinite;
+        }
+
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Elements */
+        .new-001-floating-circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+            top: -150px;
+            right: -150px;
+            z-index: 0;
+        }
+
+        .new-001-floating-square {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, rgba(139, 115, 85, 0.1), rgba(121, 99, 72, 0.1));
+            bottom: -100px;
+            left: -100px;
+            transform: rotate(45deg);
+            z-index: 0;
+        }
+
+        /* Wood Knot Effects */
+        .new-001-wood-knot {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(93, 75, 54, 0.4) 0%, rgba(73, 55, 34, 0.6) 70%);
+            top: 30%;
+            left: 20%;
+            z-index: 0;
+        }
+
+        .new-001-wood-knot-2 {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(73, 55, 34, 0.5) 0%, rgba(53, 35, 14, 0.7) 70%);
+            bottom: 30%;
+            right: 25%;
+            z-index: 0;
+        }
+
+        /* Section Title */
+        .new-001-section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 60px;
+            color: #fff;
+            position: relative;
+            z-index: 2;
+            text-shadow: 
+                2px 2px 4px rgba(0,0,0,0.5),
+                0 0 10px rgba(255, 255, 255, 0.1);
+            letter-spacing: 1px;
+        }
+
+        /* Section Description */
+        .new-001-section-desc {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 70px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+            padding: 0 20px;
+        }
+
+        /* Product Cards Grid - DESKTOP (4 columns) */
+        .new-001-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 35px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Minimal Product Card */
+        .new-001-product-card {
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .new-001-product-card:hover {
+            transform: translateY(-20px) scale(1.03);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.35),
+                0 0 0 1px rgba(255, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        /* Card Hover Effect */
+        .new-001-product-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4a574, #8b7355, #5d4b36);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+
+        .new-001-product-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Image Container */
+        .new-001-image-container {
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .new-001-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.7s ease;
+        }
+
+        .new-001-product-card:hover .new-001-card-image {
+            transform: scale(1.1) rotate(1deg);
+        }
+
+        /* Badge */
+        .new-001-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #8b7355, #5d4b36);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            z-index: 3;
+            box-shadow: 0 5px 15px rgba(93, 75, 54, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Card Info */
+        .new-001-card-info {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .new-001-card-category {
+            color: #8b7355;
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(139, 115, 85, 0.15);
+            border-radius: 20px;
+            border: 1px solid rgba(139, 115, 85, 0.2);
+        }
+
+        /* Explore Button */
+        .new-001-explore-btn {
+            background: linear-gradient(135deg, #8b7355, #5d4b36);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            letter-spacing: 0.5px;
+ 
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(93, 75, 54, 0.3);
+        }
+
+        .new-001-explore-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(93, 75, 54, 0.5);
+            background: linear-gradient(135deg, #5d4b36, #8b7355);
+        }
+
+        /* View All Button Container */
+        .new-001-view-all-container {
+            text-align: center;
+            margin-top: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .new-001-view-all-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            padding: 18px 50px;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            letter-spacing: 1px;
+            backdrop-filter: blur(10px);
+            background: rgba(139, 115, 85, 0.2);
+        }
+
+        .new-001-view-all-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.7);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* MOBILE VIEW - 6 CARDS PER ROW */
+        @media (max-width: 768px) {
+            /* Mobile Grid - 6 cards per row */
+            .new-001-cards-grid {
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                gap: 10px;
+                overflow-x: auto;
+                padding-bottom: 20px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                scrollbar-color: #8b7355 rgba(255, 255, 255, 0.1);
+            }
+
+            .new-001-cards-grid::-webkit-scrollbar {
+                height: 8px;
+            }
+
+            .new-001-cards-grid::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 10px;
+            }
+
+            .new-001-cards-grid::-webkit-scrollbar-thumb {
+                background: #8b7355;
+                border-radius: 10px;
+            }
+
+            /* Mobile Card Styling */
+            .new-001-product-card {
+                min-width: 160px;
+                border-radius: 20px;
+                margin-bottom: 5px;
+            }
+
+            .new-001-image-container {
+                height: 140px;
+            }
+
+            .new-001-card-info {
+                padding: 15px 10px;
+            }
+
+            .new-001-card-category {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+                letter-spacing: 1px;
+            }
+
+            .new-001-badge {
+                font-size: 0.7rem;
+                padding: 5px 12px;
+                top: 12px;
+                left: 12px;
+            }
+
+            .new-001-explore-btn {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+                margin-top: 10px;
+            }
+
+            .new-001-section-title {
+                font-size: 2.2rem;
+                margin-bottom: 40px;
+            }
+
+            .new-001-section-desc {
+                font-size: 1rem;
+                margin-bottom: 40px;
+            }
+
+            .new-001-gradient-section {
+                margin: 30px 10px;
+                border-radius: 30px;
+            }
+
+            .new-001-floating-circle {
+                width: 200px;
+                height: 200px;
+                top: -100px;
+                right: -100px;
+            }
+
+            .new-001-floating-square {
+                width: 150px;
+                height: 150px;
+                bottom: -75px;
+                left: -75px;
+            }
+
+            .new-001-view-all-container {
+                margin-top: 50px;
+            }
+
+            .new-001-view-all-btn {
+                padding: 15px 40px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .new-001-cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+            
+            .new-001-main-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Small Mobile Adjustments */
+        @media (max-width: 480px) {
+            .new-001-cards-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 8px;
+            }
+
+            .new-001-product-card {
+                min-width: 165px;
+            }
+
+            .new-001-image-container {
+                height: 120px;
+            }
+
+            .new-001-section-title {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+
+            .new-001-section-desc {
+                font-size: 0.9rem;
+                margin-bottom: 30px;
+            }
+
+            .new-001-view-all-btn {
+                padding: 12px 30px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Very Small Mobile */
+        @media (max-width: 360px) {
+            .new-001-cards-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 6px;
+            }
+
+            .new-001-product-card {
+                min-width: 130px;
+            }
+
+            .new-001-image-container {
+                height: 110px;
+            }
+
+            .new-001-card-info {
+                padding: 12px 8px;
+            }
+
+            .new-001-card-category {
+                font-size: 0.7rem;
+            }
+
+            .new-001-explore-btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+        }
+            .hero-video {
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-video video {
+  width: 100%;
+  max-height: 85vh;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .hero-video video {
+    max-height: 55vh;
+  }
+}
+
+        </style>
+
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+
+
+
+    {% endblock %}
+
+{% block content %}
+
+     <!-- Your Django Template Code -->
+    <section class="pxoooq-category-carousel">
+        <h2 style="font-weight: 700; " >Top Categories</h2>
+
+
+        <div class="pxoooq-category-wrapper">
+            <div class="pxoooq-category-track" id="pxoooqCategoryTrack">
+                {% for category in categories %}
+                <a href="{% url 'product:subcategory_list' category.id %}" 
+                   class="pxoooq-category-item {% if forloop.first %}active{% endif %}"
+                   data-category-id="{{ category.id }}">
+                    <div class="pxoooq-category-icon">
+                      {% if category.image %}
+                        <img src="{{ category.image.url|to_webp }}" alt="{{ category.name }}">
+                      {% else %}
+                        <img src="https://cdn-icons-png.flaticon.com/512/2830/2830283.png" alt="{{ category.name }}">
+                      {% endif %}
+                    </div>
+                    <div class="pxoooq-category-name">{{ category.name }}</div>
+                    <div class="pxoooq-category-count">{{ category.product_count }}</div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+<!-- ========== HERO SECTION ========== -->
+ 
+<div id="festival-slides-container" class="mb-1 text-center">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- === product type section start  from here -->
+
+
+   
+
+
+
+
+    <!-- BHAI - ENHANCED WOOD GRAIN SECTION -->
+    <section class="new-001-gradient-section">
+        <!-- Floating Elements -->
+        <div class="new-001-floating-circle"></div>
+        <div class="new-001-floating-square"></div>
+        <div class="new-001-wood-knot"></div>
+        <div class="new-001-wood-knot-2"></div>
+        
+        <div class="new-001-container">
+                        <h2 class="new-001-section-title">Your Own Market</h2>
+
+            <p class="new-001-section-desc">Discover our exclusive range of premium products. Scroll horizontally on mobile to view all items in each row.</p>
+            
+            <!-- Desktop: 4 columns, Mobile: 6 cards per row -->
+            <div class="new-001-cards-grid">
+                <!-- Row 1 - 6 Cards -->{% for pt in product_types %}
+                <article class="new-001-product-card">
+                    <div class="new-001-image-container">
+                        
+                        <img src="{{ pt.image.url|to_webp }}" alt="Camera" class="new-001-card-image">
+                    </div>
+                    <div class="new-001-card-info">
+                        <div class="new-001-card-category">{{ pt.name }}</div>
+                        <a href="{% url 'product:product_list' pt.category.id pt.subcategory.id pt.id %}"  class="new-001-explore-btn">
+                            <i class="fas fa-arrow-right"></i> Explore
+                        </a>
+                    </div>
+                </article>{% endfor %}
+           
+            </div>        
+         
+        </div>
+    </section>
+
+
+{% if home_video %}
+<section class="hero-video">
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+  >
+    <source src="{{ home_video.video.url }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</section>
+{% endif %}
+
+<!-- product type section ends here -->
+<!-- <section class="xxx-course-carousel-section " style="background: linear-gradient(135deg, #b30000, #ff4d00, #ffd700);">
+  <div class="xxx-course-carousel-container">
+    <h3 class="xxx-carousel-title">Grab The latest deal on yourbaazar at your doorstep</h3>
+        
+    <div class="xxx-course-carousel">
+      <div class="xxx-carousel-track">
+        {% for imgc in hero %}
+          <div class="xxx-carousel-item {% if forloop.first %}xxx-active{% endif %}">
+            <img src="{{ imgc.image.url|to_webp }}" alt="Course">
+          </div>
+        {% empty %}
+          <p>No hero images found</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section> -->
+
+{% comment %} <!-- ========== CATEGORIES SECTION ========== -->
+<section class="categories-section section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Shop by Categories</h2>
+            <p class="section-subtitle">Browse products by your favorite categories</p>
+        </div>
+        
+        <div class="category-grid">
+            {% for category in categories %}
+            <div class="category-card">
+                <a  style="text-decoration: none;"  href="{% url 'product:subcategory_list' category.id %}" class="category-link">
+                    <div class="category-image-container">
+
+
+   {% if category.image %}
+                 <img loading="lazy" src="{{ category.image.url|to_webp }}" alt="{{ category.name }}" class="category-image">
+             
+                {% else %}
+                    <img src="/static/images/no-image.png" class="tq12-card-img" alt="No image available">
+                {% endif %}
+
+
+                     
+                        
+                        <div class="category-overlay">
+                            <span class="shop-now-text">Shop Now</span>
+                           
+                        </div>
+                    </div>
+                    <div class="category-info">
+                        <h3 style="text-decoration: none; font-size: 1rem;" class="category-name section-title">{{ category.name }}</h3>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+ {% endcomment %}
+
+
+
+{% comment %} ============recent_products start==========    {% endcomment %}
+
+
+
+
+{% if recent_products %}
+
+<section class="fpsc-product-carousel-section">
+
+  <div class="fpsc-product-carousel-container">
+
+    <h3 class="fpsc-carousel-title">
+      Recently Viewed
+    </h3>
+
+    <div class="fpsc-product-carousel fpsc-owl-theme">
+
+      <div class="fpsc-carousel-track">
+
+        {% for product in recent_products %}
+
+        <div class="fpsc-product-card">
+
+          <div class="fpsc-product-image">
+
+            {% with first_color=product.colors.first %}
+
+                {% if product.thumbnail %}
+
+                    <img src="{{ product.thumbnail.url|to_webp }}"
+                         class="tq12-card-img"
+                         alt="{{ product.name }}">
+
+                {% elif product.image %}
+
+                    <img src="{{ product.image.url|to_webp }}"
+                         class="tq12-card-img"
+                         alt="{{ product.name }}">
+
+                {% elif first_color and first_color.image1 %}
+
+                    <img src="{{ first_color.image1.url|to_webp }}"
+                         class="tq12-card-img"
+                         alt="{{ product.name }}">
+
+                {% else %}
+
+                    <img src="/static/images/no-image.png"
+                         class="tq12-card-img"
+                         alt="No image available">
+
+                {% endif %}
+
+            {% endwith %}
+
+          </div>
+
+          <div class="fpsc-product-details">
+
+            <h4 class="fpsc-product-title">
+              {{ product.name }}
+            </h4>
+
+            <div class="fpsc-price-container">
+
+              {% with default_variant=product.get_default_variant %}
+
+                  {% if default_variant %}
+
+                      <span class="fpsc-current-price">
+                        ₹{{ default_variant.price_after_discount|floatformat:2 }}
+                      </span>
+
+                      {% if default_variant.discount > 0 %}
+
+                          <span class="fpsc-original-price">
+                            ₹{{ default_variant.price_before_discount|floatformat:2 }}
+                          </span>
+
+                      {% endif %}
+
+                  {% else %}
+
+                      <span class="fpsc-current-price">
+                        Price not available
+                      </span>
+
+                  {% endif %}
+
+              {% endwith %}
+
+            </div>
+
+            <a href="{{ product.get_absolute_url }}"
+               class="fpsc-view-btn"
+               style="text-decoration:none">
+
+               View Product
+
+            </a>
+
+          </div>
+
+        </div>
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===============suggested for you ================== -->
+
+<section class="fpsc1-product-carousel-section">
+  <div class="fpsc1-product-carousel-container">
+    <h3 class="fpsc1-carousel-title">Suggested for You</h3>
+    
+    <div class="fpsc1-product-carousel fpsc1-owl-theme">
+      
+      <div class="fpsc1-carousel-track">
+    
+          {% for prod in suggested_products %}
+        <!-- Product 5 -->
+        <div class="fpsc1-product-card">
+          <div class="fpsc1-product-image">
+     {% with first_color=prod.colors.first %}
+    {% if prod.thumbnail %}
+        <img src="{{ prod.thumbnail.url|to_webp }}" class="tq12-card-img" alt="{{ prod.name }}">
+
+    {% elif prod.image %}
+        <img src="{{ prod.image.url|to_webp }}" class="tq12-card-img" alt="{{ prod.name }}">
+
+    {% elif first_color and first_color.image1 %}
+        <img src="{{ first_color.image1.url|to_webp }}" class="tq12-card-img" alt="{{ prod.name }}">
+
+    {% else %}
+        <img src="/static/images/no-image.png" class="tq12-card-img" alt="No image">
+    {% endif %}
+{% endwith %}
+          </div>
+          <div class="fpsc1-product-details">
+            <h4 class="fpsc1-product-title">{{ prod.name }}</h4>
+            <div class="fpsc1-price-container">
+                  {% with prod.get_default_variant as variant %} {% if variant %}
+              <span class="fpsc1-current-price">₹{{ variant.price_after_discount|floatformat:2 }}</span>
+              <span class="fpsc1-original-price">₹{{ variant.price_before_discount|floatformat:2 }}</span>
+            </div> {% endif %}
+                        {% endwith %}
+            <a href="{{ prod.get_absolute_url }}" class="fpsc1-view-btn" style="text-decoration:none">View Product</a>
+          </div>
+        </div>
+           
+         {% endfor %}
+      </div>
+      
+     
+    </div>
+  </div>
+
+
+
+</section>
+
+{% if kitchen_appliances %}
+<section class="fpsc2-product-carousel-section">
+  <div class="fpsc2-product-carousel-container">
+    
+    <h3 class="fpsc2-carousel-title">Kitchen Appliances</h3>
+
+    <div class="fpsc2-product-carousel fpsc2-owl-theme">
+      <div class="fpsc2-carousel-track">
+
+        {% for product in products %}
+        <div class="fpsc2-product-card">
+
+          <div class="fpsc2-product-image">
+
+            {% with first_color=product.colors.first %}
+
+                {% if product.thumbnail %}
+                    <img src="{{ product.thumbnail.url|to_webp }}" 
+                         class="tq12-card-img" 
+                         alt="{{ product.name }}">
+
+                {% elif product.image %}
+                    <img src="{{ product.image.url|to_webp }}" 
+                         class="tq12-card-img" 
+                         alt="{{ product.name }}">
+
+                {% elif first_color and first_color.image1 %}
+                    <img src="{{ first_color.image1.url|to_webp }}" 
+                         class="tq12-card-img" 
+                         alt="{{ product.name }}">
+
+                {% else %}
+                    <img src="/static/images/no-image.png" 
+                         class="tq12-card-img" 
+                         alt="No image available">
+                {% endif %}
+
+            {% endwith %}
+
+          </div>
+
+          <div class="fpsc2-product-details">
+
+            <h4 class="fpsc2-product-title">{{ product.name }}</h4>
+
+            <div class="fpsc2-price-container">
+
+              {% with default_variant=product.get_default_variant %}
+
+                  {% if default_variant %}
+
+                      {% if default_variant.discount > 0 %}
+
+                          <span class="fpsc2-current-price">
+                              ₹{{ default_variant.price_after_discount|floatformat:2 }}
+                          </span>
+
+                          <span class="fpsc2-original-price">
+                              ₹{{ default_variant.price_before_discount|floatformat:2 }}
+                          </span>
+
+                      {% else %}
+
+                          <span class="fpsc2-current-price">
+                              ₹{{ default_variant.price_before_discount|floatformat:2 }}
+                          </span>
+
+                      {% endif %}
+
+                  {% else %}
+
+                      <p>Price not available</p>
+
+                  {% endif %}
+
+              {% endwith %}
+
+            </div>
+
+            <a href="{{ product.get_absolute_url }}" 
+               class="fpsc2-view-btn" 
+               style="text-decoration:none">
+               View Product
+            </a>
+
+          </div>
+
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+
+{% else %}
+    <p>No kitchen appliances found.</p>
+{% endif %}
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== SALE PRODUCTS SECTION ========== -->
+<section class="sale-section section">
+    <div class="container">
+        <div class="sale-header">
+            <h2 class="section-title">Sale Products</h2>
+            <a  style="text-decoration: none;" href="{% url 'product:sales_products' %}" class="view-all-link">View All</a>
+        </div>
+        
+        <div class="product-grid">
+            {% for variant in sale_products|slice:":8" %}
+                <div class="product-card">
+                    <div class="product-badge">SALE</div>
+                    <div class="product-image-container">
+                        <img src="{{ variant.color.image_main.url|to_webp }}" 
+                             alt="{{ variant.color.product.name }}" 
+                             class="product-image" 
+                             loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <p class="fpsc2-product-title">{{ variant.color.product.name }}</p>
+                        <div class="product-price">
+                            <span class="current-price">₹{{ variant.price_after_discount|floatformat:2 }}</span>
+                                                       <span class="discount-percent">{{ variant.discount|floatformat:0 }}% OFF</span>
+
+                            <span class="original-price">₹{{ variant.price_before_discount|floatformat:2 }}</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="{% url 'product:product_detail' variant.color.product.id %}" class="shoe-btn" style="text-decoration: none; padding: 10px 35px;" >
+                                <i class="fas fa-eye"></i>  View
+                            </a>
+                         
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<!-- ========== FESTIVAL SECTION ========== -->
+<section class="festival2-section section">
+    <div class="container">
+        <div class="festival2-content">
+            <h2>Festival Sale</h2>
+            <p>Celebrate  with exclusive discounts and offers on yourbaazar</p>
+            <a href="{% url 'product:sales_products' %}" class="btn btn-primary">Shop the Sale</a>
+
+            <div class="festival2-offers">
+                {% for sale in sales %}
+                    <div class="festival2-offer">
+                        {% if sale.sale_image %}
+                            <img src="{{ sale.sale_image.url|to_webp }}" alt="{{ sale.sale_heading }}" class="sale-img" style="width: 100%; max-height: 150px; object-fit: cover;">
+                        {% endif %}
+                        <h3>{{ sale.sale_heading }}</h3>
+                        <div class="discount">{{ sale.sale_discount }}</div>
+                        <p class="offer-desc">{{ sale.sale_paragraph }}</p>
+                    </div>
+                {% empty %}
+                    <p>No sales available at the moment.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ========== SHOES SECTION ========== -->
+<section class="shoes-section section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Trending Footwear</h2>
+            <p class="section-subtitle">Step out in style with our premium collection</p>
+        </div>
+
+        <div class="shoes-tabs">
+            <button class="shoes-tab active" data-category="all">All Shoes</button>
+            <button class="shoes-tab" data-category="mens">Men's Sneakers</button>
+            <button class="shoes-tab" data-category="womens">Women's Sneakers</button>
+            <button class="shoes-tab" data-category="kids">Kids Sneakers</button>
+        </div>
+
+        <div class="shoes-grid">
+            {% for variant in mens_sneakers %}
+            <div class="shoe-card" data-category="mens">
+                
+                <div class="shoe-image-container">
+                    <img src="{{ variant.color.image_main.url|to_webp }}" alt="{{ variant.color.product.name }}" class="shoe-image" loading="lazy">
+                    
+                </div>
+                <div class="shoe-info">
+                    <h3 class="shoe-title">{{ variant.color.product.name }}</h3>
+                    <div class="shoe-price">₹{{ variant.price_after_discount|floatformat:1 }}</div>
+                 
+                 
+                    <a href="{% url 'product:product_detail' variant.color.product.id %}"  style="text-decoration: none;"  class="shoe-btn">
+<i class="fas fa-eye"></i>View
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+
+            {% for variant in womens_sneakers %}
+            <div class="shoe-card" data-category="womens">
+                <div class="shoe-image-container">
+                    <img src="{{ variant.color.image_main.url|to_webp }}" alt="{{ variant.color.product.name }}" class="shoe-image" loading="lazy">
+                   
+                </div>
+                <div class="shoe-info">
+                    <h3 class="shoe-title">{{ variant.color.product.name }}</h3>
+                    <div class="shoe-price">₹{{ variant.price_after_discount|floatformat:1 }}</div>
+                  
+                    <a href="{% url 'product:product_detail' variant.color.product.id %}"  style="text-decoration: none;"  class="shoe-btn">
+<i class="fas fa-eye"></i>View
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+
+            {% for variant in kids_sneakers %}
+            <div class="shoe-card" data-category="kids">
+                <div class="shoe-image-container">
+                    <img src="{{ variant.color.image_main.url|to_webp }}" alt="{{ variant.color.product.name }}" class="shoe-image" loading="lazy">
+                   
+                </div>
+                <div class="shoe-info">
+                    <h3 class="shoe-title">{{ variant.color.product.name }}</h3>
+                    <div class="shoe-price">₹{{ variant.price_after_discount|floatformat:1 }}</div>
+                   
+                    <button  style="text-decoration: none;" class="shoe-btn">
+                       <i class="fas fa-eye"></i>View
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ========== BANNER SECTION ========== -->
+<section class="banner-section section"  id="banner">
+    <div class="container">
+        <div class="banner-grid">
+
+            <!-- Women's Collection -->
+            <div class="banner-card">
+                {% if collection.womens_image %}
+                    <img loading="lazy" src="{{ collection.womens_image.url|to_webp }}" alt="Women's Fashion" class="banner-img">
+                {% else %}
+                    <img loading="lazy" src="{% static 'images/placeholder.jpg' %}" alt="Women's Fashion" class="banner-img">
+                {% endif %}
+                <div class="banner-content">
+                    <h3>{{ collection.womens_heading }}</h3>
+                    <p>{{ collection.womens_paragraph }}</p>
+                    <a href="{% url 'product:collection_view' 'women' %}" style="text-decoration: none;" class="shoe-btn">Shop Now</a>
+                </div>
+            </div>
+
+            <!-- Men's Collection -->
+            <div class="banner-card">
+                {% if collection.mens_image %}
+                    <img loading="lazy" src="{{ collection.mens_image.url|to_webp }}" alt="Men's Fashion" class="banner-img">
+                {% else %}
+                    <img loading="lazy" src="{% static 'images/placeholder.jpg' %}" alt="Men's Fashion" class="banner-img">
+                {% endif %}
+                <div class="banner-content">
+                    <h3>{{ collection.mens_heading }}</h3>
+                    <p>{{ collection.mens_paragraph }}</p>
+                    <a href="{% url 'product:collection_view' 'men' %}" style="text-decoration: none;" class="shoe-btn">Shop Now</a>
+                </div>
+            </div>
+
+            <!-- Accessories Collection -->
+            <div class="banner-card">
+                {% if collection.accessories_image %}
+                    <img loading="lazy" src="{{ collection.accessories_image.url|to_webp }}" alt="Accessories" class="banner-img">
+                {% else %}
+                    <img loading="lazy" src="{% static 'images/placeholder.jpg' %}" alt="Accessories" class="banner-img">
+                {% endif %}
+                <div class="banner-content">
+                    <h3>{{ collection.accessories_heading }}</h3>
+                    <p>{{ collection.accessories_paragraph }}</p>
+                    <a href="{% url 'product:collection_view' 'accessories' %}" style="text-decoration: none;" class="shoe-btn">Shop Now</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========== FEATURES SECTION ========== -->
+<section class="features-section section">
+    <div class="container">
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h3>Free Shipping</h3>
+                <p>Free shipping on all orders over ₹1500</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-undo"></i>
+                </div>
+                <h3>Easy Returns</h3>
+                <p>Product only Return within 2 days after Delivery</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Secure Payment</h3>
+                <p>Your payment information is secure through Razorpay Payment Gateway</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Friendly customer support</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ========== BACK TO TOP ========== -->
+<a href="#"  style="text-decoration: none;" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+</a>
+{% if new_coupons or request.session.order_success_data %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // First check if we have order success data
+  {% if request.session.order_success_data %}
+    Swal.fire({
+      title: '🚀 Order Confirmed!',
+      html: `
+        <div class="order-success-card">
+          <div class="order-icon">📦</div>
+          <div class="order-details">
+            <p><b>Order ID:</b> #{{ request.session.order_success_data.order_id }}</p>
+            <p><b>Payment ID:</b> {{ request.session.order_success_data.payment_id|default:"COD" }}</p>
+            <p class="thank-you">Thank you for choosing <strong>YourBaazar</strong>!</p>
+          </div>
+        </div>
+      `,
+      icon: 'success',
+      background: '#f8f9fa',
+      confirmButtonText: 'continue shopping',
+      confirmButtonColor: '#4e73df',
+      showCloseButton: true,
+      footer: 'Your items will arrive soon!'
+    }).then((result) => {
+      // After order success is acknowledged, show coupons if available
+      {% if new_coupons %}
+        Swal.fire({
+          title: '✨ Unlocked Rewards!',
+          text: "You've earned special coupons: {{ new_coupons|join:', ' }}",
+          icon: 'success',
+          background: '#f8f9fa',
+          confirmButtonText: 'Claim Rewards',
+          confirmButtonColor: '#4e73df'
+        });
+      {% endif %}
+      
+      // Clear the session data via AJAX
+      fetch('/clear-order-success/', {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': '{{ csrf_token }}',
+          'Content-Type': 'application/json'
+        }
+      });
+    });
+  
+  {% elif new_coupons %}
+    // If only coupons are available (no order success)
+    Swal.fire({
+      title: '✨ Unlocked Rewards!',
+      text: "You've earned special coupons: {{ new_coupons|join:', ' }}",
+      icon: 'success',
+      background: '#f8f9fa',
+      confirmButtonText: 'Claim Rewards',
+      confirmButtonColor: '#4e73df'
+    });
+  {% endif %}
+});
+
+// CSS for styling
+const style = document.createElement('style');
+style.textContent = `
+  .order-success-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+  }
+  .order-icon {
+    font-size: 2.5rem;
+    background: #4e73df;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .order-details {
+    text-align: left;
+  }
+  .thank-you {
+    margin-top: 10px;
+    color: #4e73df;
+    font-style: italic;
+  }
+  .swal2-popup {
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+  }
+`;
+document.head.appendChild(style);
+</script>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_js %}
+
+    <script>
+        // Simple JavaScript for smooth scrolling
+        const pxoooqTrack = document.getElementById('pxoooqCategoryTrack');
+        let pxoooqIsDown = false;
+        let pxoooqStartX;
+        let pxoooqScrollLeft;
+        
+        // Mouse Down - for drag scroll
+        pxoooqTrack.addEventListener('mousedown', (e) => {
+            if (e.target.tagName === 'IMG' || e.target.parentElement.tagName === 'A') {
+                // Allow click on images and links
+                return true;
+            }
+            
+            pxoooqIsDown = true;
+            pxoooqStartX = e.pageX - pxoooqTrack.offsetLeft;
+            pxoooqScrollLeft = pxoooqTrack.scrollLeft;
+        });
+        
+        // Mouse Leave
+        pxoooqTrack.addEventListener('mouseleave', () => {
+            pxoooqIsDown = false;
+        });
+        
+        // Mouse Up - CRITICAL: Don't prevent default on clicks
+        pxoooqTrack.addEventListener('mouseup', (e) => {
+            pxoooqIsDown = false;
+            
+            // Check if click was on a category item
+            let target = e.target;
+            while (target && !target.classList.contains('pxoooq-category-item')) {
+                target = target.parentElement;
+            }
+            
+            // If clicked on category item, update active state
+            if (target && target.classList.contains('pxoooq-category-item')) {
+                // Remove active from all
+                document.querySelectorAll('.pxoooq-category-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                // Add active to clicked
+                target.classList.add('active');
+            }
+        });
+        
+        // Mouse Move - for dragging
+        pxoooqTrack.addEventListener('mousemove', (e) => {
+            if (!pxoooqIsDown) return;
+            e.preventDefault();
+            const x = e.pageX - pxoooqTrack.offsetLeft;
+            const walk = (x - pxoooqStartX) * 2;
+            pxoooqTrack.scrollLeft = pxoooqScrollLeft - walk;
+        });
+        
+        // Wheel scroll
+        pxoooqTrack.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            pxoooqTrack.scrollLeft += e.deltaY;
+        });
+        
+        // Touch events for mobile
+        pxoooqTrack.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            pxoooqStartX = touch.pageX - pxoooqTrack.offsetLeft;
+            pxoooqScrollLeft = pxoooqTrack.scrollLeft;
+        });
+        
+        pxoooqTrack.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const x = touch.pageX - pxoooqTrack.offsetLeft;
+            const walk = (x - pxoooqStartX) * 2;
+            pxoooqTrack.scrollLeft = pxoooqScrollLeft - walk;
+        });
+        
+        // Handle image loading errors
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.pxoooq-category-icon img');
+            images.forEach(img => {
+                img.onerror = function() {
+                    this.src = 'https://cdn-icons-png.flaticon.com/512/2830/2830283.png';
+                };
+            });
+        });
+    </script>
+ <script src="{% static 'js/index.js' %}"></script>
+ <script>
+document.addEventListener("DOMContentLoaded", function() {
+  fetch("{% url 'basicinfo:festival_slides' %}")
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById("festival-slides-container").innerHTML = html;
+    })
+    .catch(err => {
+      console.error("Error loading festival slides:", err);
+      document.getElementById("festival-slides-container").innerHTML =
+        "<p class='text-danger'>Failed to load slides.</p>";
+    });
+});
+</script>
+<script>
+  const video = document.getElementById("heroVideo");
+  let currentIndex = 0;
+
+  video.addEventListener("ended", () => {
+    currentIndex = (currentIndex + 1) % videoList.length;
+    video.src = videoList[currentIndex];
+    video.play();
+  });
+</script>
+
+{% endblock %}
