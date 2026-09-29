@@ -71,6 +71,11 @@ class subcategory(AutoWebpMixin, models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def direct_product(self):
+        """Returns the first available product in this subcategory (bypassing product list)"""
+        return self.product_set.filter(is_available=True).first() or self.product_set.first()
+
 
 # ---------- Product Type ----------
 class product_type(AutoWebpMixin, models.Model):

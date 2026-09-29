@@ -33,15 +33,30 @@
                  style="animation-delay: {{ forloop.counter0|divisibleby:3|yesno:'0,0.2s,0.4s' }}"
                  data-category="{{ category.name }}" data-subcategory="{{ sub.name }}">
                 <div class="product-image">
-                    <img src="{{ sub.image.url|to_webp }}" alt="{{ sub.name }}" loading="lazy">
+                    {% if sub.direct_product %}
+                    <a href="{% url 'product:product_detail' sub.direct_product.id %}">
+                        <img src="{{ sub.image.url|to_webp }}" alt="{{ sub.name }}" loading="lazy">
+                    </a>
+                    {% else %}
+                    <a href="{% url 'product:product_type_list' category.id sub.id %}">
+                        <img src="{{ sub.image.url|to_webp }}" alt="{{ sub.name }}" loading="lazy">
+                    </a>
+                    {% endif %}
                 </div>
                   
                 <div class="product-info">
                     <span class="product-category">{{ category.name }}</span>
                     <p class="product-description">{{ sub.description|truncatechars:100 }}</p>
+                    {% if sub.direct_product %}
+                    <a class="btn btn-success product-title" href="{% url 'product:product_detail' sub.direct_product.id %}">
+                        {{ sub.name }} <i class="fas fa-arrow-right"></i>
+                    </a>
+                    {% else %}
+                    <!-- Future me product list / type list wapas use karne ke liye fallback -->
                     <a class="btn btn-success product-title" href="{% url 'product:product_type_list' category.id sub.id %}">
                         {{ sub.name }} <i class="fas fa-arrow-right"></i>
                     </a>  
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}

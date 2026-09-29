@@ -33,12 +33,11 @@ def clear_order_success(request):
     return JsonResponse({'status': 'error'}, status=400)
 
 
-@cache_page(60 * 15)  # 15 minutes
+# @cache_page(60 * 15)  # 15 minutes - Disabled so new categories/products show immediately
 def indexpage(request):
     hero=HeroImage.objects.all()
     categories1 = category.objects.exclude(name__iexact='sales') \
-        .annotate(total_products=Count('subcategory__product_type__product')) \
-        .filter(total_products__gt=0)
+        .annotate(total_products=Count('product'))
     subcategory1= subcategory.objects.all()
     product_types = product_type.objects.all()
     def get_sneakers(subcat_name):
@@ -177,8 +176,8 @@ def nav(request):
     })
 
 def category_list(request):
-    categories = category.objects.all()
-    return render(request, 'index.html', {'categories1': categories})
+    categories = category.objects.exclude(name__iexact='sales').annotate(total_products=Count('product'))
+    return render(request, 'index.html', {'categories': categories, 'categories1': categories})
 
 def subcategory_list(request, category_id):
 
@@ -187,7 +186,7 @@ def subcategory_list(request, category_id):
         category_obj = get_object_or_404(category, id=category_id)
         # Get subcategories related to that category
         subcategories = subcategory.objects.filter(category=category_obj) \
-            .annotate(total_products=Count('product_type__product')) \
+            .annotate(total_products=Count('product')) \
             .filter(total_products__gt=0)
         # Render the response
         return render(request, 'subcategorypage.html', {
@@ -240,7 +239,14 @@ def product_type_list(request, category_id, subcategory_id):
     try:
         # Get the subcategory object
         subcategory_obj = get_object_or_404(subcategory, id=subcategory_id, category_id=category_id)
-        # Get product types related to that subcategory
+
+        # ✅ SHORTCUT (Bypass): Agar subcategory ka product available hai toh direct product_detail par le jao
+        # Future me agar wapas product_list / product_type_list use karni ho, toh simply niche wali 3 lines comment out kar dena:
+        direct_prod = Product.objects.filter(subcategory=subcategory_obj, is_available=True).first() or Product.objects.filter(subcategory=subcategory_obj).first()
+        if direct_prod:
+            return redirect('product:product_detail', product_id=direct_prod.id)
+
+        # Get product types related to that subcategory (preserved for future use)
         product_types = product_type.objects.filter(subcategory=subcategory_obj, category_id=category_id)
         # Render the response
         return render(request, 'subcategorypage.html', {

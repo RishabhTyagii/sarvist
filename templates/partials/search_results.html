@@ -61,7 +61,7 @@
     <div class="search-section-title"><i class="fas fa-box"></i> Products</div>
     {% for pu in product_search %}
         <div class="dropdown-item">
-            <a href="{% url 'product:product_list' category_id=pu.product_type.subcategory.category.id subcategory_id=pu.product_type.subcategory.id product_type_id=pu.product_type.id %}">
+            <a href="{% url 'product:product_detail' pu.id %}">
                 {{ pu.name|highlight:request.GET.q }}
             </a>
         </div>
