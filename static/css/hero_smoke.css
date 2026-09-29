@@ -1,0 +1,234 @@
+/* SMOKE HERO SECTION */
+.sarvist-hero {
+    position: relative;
+    width: 100%;
+    min-height: 85vh;
+    background: linear-gradient(135deg, #0a0015 0%, #120025 30%, #0d001f 60%, #050010 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 60px 20px;
+}
+
+/* Smoke canvas */
+#smokeCanvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Animated gradient orbs */
+.sarvist-hero::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(139, 0, 255, 0.35) 0%, transparent 70%);
+    top: -200px; left: -200px;
+    border-radius: 50%;
+    animation: orbFloat 8s ease-in-out infinite;
+    z-index: 1;
+}
+.sarvist-hero::after {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255, 0, 120, 0.3) 0%, transparent 70%);
+    bottom: -150px; right: -150px;
+    border-radius: 50%;
+    animation: orbFloat 10s ease-in-out infinite reverse;
+    z-index: 1;
+}
+.sarvist-hero-orb3 {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0, 200, 255, 0.2) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: orbPulse 6s ease-in-out infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -40px) scale(1.05); }
+    66% { transform: translate(-20px, 30px) scale(0.95); }
+}
+@keyframes orbPulse {
+    0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.15); }
+}
+
+/* Hero content */
+.sarvist-hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 900px;
+}
+
+/* Glowing badge */
+.sarvist-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(139, 0, 255, 0.2);
+    border: 1px solid rgba(139, 0, 255, 0.5);
+    color: #c084fc;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+    animation: badgeGlow 3s ease-in-out infinite;
+}
+@keyframes badgeGlow {
+    0%, 100% { box-shadow: 0 0 15px rgba(139, 0, 255, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(139, 0, 255, 0.6), 0 0 60px rgba(139, 0, 255, 0.2); }
+}
+
+/* Main heading */
+.sarvist-hero-title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    letter-spacing: -2px;
+}
+.sarvist-hero-title .gradient-text {
+    background: linear-gradient(90deg, #c084fc, #f472b6, #38bdf8, #c084fc);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+}
+@keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 300% center; }
+}
+
+/* Subtitle */
+.sarvist-hero-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 45px;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* CTA Buttons */
+.sarvist-hero-cta {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+.sarvist-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #7c3aed, #c026d3);
+    color: #fff;
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.4);
+}
+.sarvist-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 50px rgba(124, 58, 237, 0.7), 0 10px 30px rgba(0,0,0,0.3);
+    color: #fff;
+    text-decoration: none;
+}
+.sarvist-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+.sarvist-btn-secondary:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-3px);
+    color: #fff;
+    text-decoration: none;
+    border-color: rgba(255,255,255,0.4);
+}
+
+/* Stats row */
+.sarvist-hero-stats {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.sarvist-stat {
+    text-align: center;
+}
+.sarvist-stat-number {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #fff;
+    background: linear-gradient(135deg, #c084fc, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.sarvist-stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 3px;
+}
+.sarvist-stat-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.15);
+    align-self: stretch;
+}
+
+/* Floating particles */
+.smoke-particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 2;
+    animation: particleFloat linear infinite;
+}
+@keyframes particleFloat {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 0.5; }
+    100% { transform: translateY(-20px) scale(1); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .sarvist-hero { min-height: 70vh; }
+    .sarvist-hero-stats { gap: 20px; }
+    .sarvist-stat-divider { display: none; }
+}
