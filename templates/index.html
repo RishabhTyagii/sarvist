@@ -3,7 +3,7 @@
 {% load webp_filter %}
 {% load static %}
 
-{% block title %}Yourbaazar-India's Own Shopping Platfrom{% endblock %}
+{% block title %}Sarvist - India's Own Shopping Platform{% endblock %}
 
 {% block extra_css %}
     <style>
@@ -197,38 +197,14 @@
             line-height: 1.6;
         }
 
-        /* BHAI - IMPROVED WOOD GRAIN BACKGROUND */
+        /* BHAI - SEXY NEON BACKGROUND */
         .new-001-gradient-section {
-            background-color: #8b7355; /* Base wood color */
+            background-color: #050510; /* Deep dark background */
             background-image: 
-                /* Wood grain pattern layer 1 */
-                radial-gradient(circle at 10% 20%, rgba(155, 125, 95, 0.3) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(175, 145, 115, 0.3) 0%, transparent 20%),
-                radial-gradient(circle at 50% 50%, rgba(135, 105, 75, 0.2) 0%, transparent 30%),
-                /* Wood grain lines */
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 15px,
-                    rgba(121, 99, 72, 0.1) 15px,
-                    rgba(121, 99, 72, 0.1) 16px
-                ),
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 40px,
-                    rgba(93, 75, 54, 0.15) 40px,
-                    rgba(93, 75, 54, 0.15) 41px
-                ),
-                /* Wood texture overlay */
-                linear-gradient(
-                    135deg,
-                    rgba(139, 115, 85, 0.9) 0%,
-                    rgba(121, 99, 72, 0.9) 25%,
-                    rgba(107, 87, 63, 0.9) 50%,
-                    rgba(93, 75, 54, 0.9) 75%,
-                    rgba(121, 99, 72, 0.9) 100%
-                );
+                radial-gradient(circle at 10% 20%, rgba(121, 40, 202, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(0, 247, 255, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(5,5,16,0.9) 0%, rgba(20,10,35,0.8) 50%, rgba(5,5,16,0.9) 100%);
             margin: 60px 0;
             border-radius: 40px;
             box-shadow: 
@@ -237,7 +213,7 @@
                 inset 0 -10px 20px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(93, 75, 54, 0.6);
+            border: 1px solid rgba(255, 0, 128, 0.5);
         }
 
         /* Wood Frame Effect */
@@ -263,11 +239,11 @@
             right: -3px;
             bottom: -3px;
             background: linear-gradient(45deg, 
-                #d4a574, 
-                #8b7355, 
-                #5d4b36,
-                #a99276,
-                #d4a574);
+                #ff0080, 
+                #7928ca, 
+                #00f7ff,
+                #7928ca,
+                #ff0080);
             background-size: 400% 400%;
             border-radius: 43px;
             z-index: -1;
@@ -310,7 +286,7 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(93, 75, 54, 0.4) 0%, rgba(73, 55, 34, 0.6) 70%);
+            background: radial-gradient(circle, rgba(121, 40, 202, 0.4) 0%, rgba(255, 0, 128, 0.3) 70%);
             top: 30%;
             left: 20%;
             z-index: 0;
@@ -395,7 +371,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #d4a574, #8b7355, #5d4b36);
+            background: linear-gradient(90deg, #ff0080, #7928ca, #00f7ff);
             transform: scaleX(0);
             transition: transform 0.4s ease;
             transform-origin: left;
@@ -429,7 +405,7 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            background: linear-gradient(135deg, #8b7355, #5d4b36);
+            background: linear-gradient(135deg, #ff0080, #7928ca);
             color: white;
             padding: 8px 20px;
             border-radius: 25px;
@@ -448,7 +424,7 @@
         }
 
         .new-001-card-category {
-            color: #8b7355;
+            color: #ff0080;
             font-size: 1rem;
             font-weight: 800;
             text-transform: uppercase;
@@ -456,14 +432,14 @@
             margin-bottom: 15px;
             display: inline-block;
             padding: 5px 15px;
-            background: rgba(139, 115, 85, 0.15);
+            background: rgba(255, 0, 128, 0.15);
             border-radius: 20px;
-            border: 1px solid rgba(139, 115, 85, 0.2);
+            border: 1px solid rgba(255, 0, 128, 0.3);
         }
 
         /* Explore Button */
         .new-001-explore-btn {
-            background: linear-gradient(135deg, #8b7355, #5d4b36);
+            background: linear-gradient(135deg, #ff0080, #7928ca);
             color: white;
             border: none;
             padding: 14px 30px;
@@ -487,7 +463,7 @@
         .new-001-explore-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(93, 75, 54, 0.5);
-            background: linear-gradient(135deg, #5d4b36, #8b7355);
+            background: linear-gradient(135deg, #7928ca, #ff0080);
         }
 
         /* View All Button Container */
