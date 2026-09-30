@@ -3,693 +3,10 @@
 {% load webp_filter %}
 {% load static %}
 
-{% block title %}Sarvist - India's Own Shopping Platform{% endblock %}
+{% block title %}Sarvist - 🌶️ Fresh &amp; Hot Indian Food{% endblock %}
 
 {% block extra_css %}
-    <style>
-        /* Reset and Base */
-          /* Reset and Basewxx */
-        .pxoooq-category-carousel * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        /* Main Container */
-        .pxoooq-category-carousel {
-            width: 100%;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-        }
-        
-        /* Carousel Wrapper */
-        .pxoooq-category-wrapper {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            background: white;
-            padding: 15px 0;
-            border-bottom: 1px solid #eaeaea;
-        }
-        
-        /* Carousel Track */
-        .pxoooq-category-track {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding: 5px 10px;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        
-        .pxoooq-category-track::-webkit-scrollbar {
-            display: none;
-        }
-        
-        /* Category Item */
-        .pxoooq-category-item {
-            flex: 0 0 auto;
-            width: 100px; /* Thoda increase kiya */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            cursor: pointer;
-            padding: 10px 5px;
-            border-radius: 10px;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            color: #333;
-        }
-        
-        .pxoooq-category-item:hover {
-            background: #f8f9fa;
-            transform: translateY(-2px);
-        }
-        
-        .pxoooq-category-item.active {
-            background: #f0f7ff;
-            border: 1px solid #0066ff20;
-        }
-        
-        /* Round Image Container - SIZE BADHAYA HAI */
-        .pxoooq-category-icon {
-            width: 75px;  /* 60 se 75 kiya */
-            height: 75px; /* 60 se 75 kiya */
-            min-width: 75px;
-            margin-bottom: 10px;
-            border-radius: 50%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea0d, #764ba20d);
-            border: 1.5px solid #f0f0f0;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-        
-        .pxoooq-category-item:hover .pxoooq-category-icon {
-            border-color: #667eea;
-            background: linear-gradient(135deg, #667eea15, #764ba215);
-        }
-        
-        /* Image Styling - FULL IMAGE WITHOUT CROP */
-        .pxoooq-category-icon img {
-            width: 90%;  /* 100% se 90% kiya taki border dikhe */
-            height: 90%; /* 100% se 90% kiya */
-            object-fit: contain; /* contain use kiya cover ki jagah */
-            border-radius: 50%;
-            padding: 2px;
-            background: white;
-            transition: all 0.3s ease;
-        }
-        
-        /* Category Name */
-        .pxoooq-category-name {
-            font-size: 0.8rem; /* Thoda increase */
-            font-weight: 500;
-            color: #444;
-            line-height: 1.3;
-            width: 100%;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            margin-top: 5px;
-        }
-        
-        /* Category Count */
-        .pxoooq-category-count {
-            font-size: 0.7rem;
-            color: #888;
-            margin-top: 3px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .pxoooq-category-item {
-                width: 90px;
-            }
-            
-            .pxoooq-category-icon {
-                width: 65px;
-                height: 65px;
-                min-width: 65px;
-            }
-            
-            .pxoooq-category-icon img {
-                width: 88%;
-                height: 88%;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .pxoooq-category-carousel {
-                padding: 0 10px;
-            }
-            
-            .pxoooq-category-item {
-                width: 80px;
-            }
-            
-            .pxoooq-category-icon {
-                width: 60px;
-                height: 60px;
-                min-width: 60px;
-            }
-            
-            .pxoooq-category-icon img {
-                width: 85%;
-                height: 85%;
-            }
-            
-            .pxoooq-category-track {
-                gap: 15px;
-            }
-        }
-
-
     
- /* Main Container */
-        .new-001-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .new-001-main-title {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #1a1a2e;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-        }
-
-        .new-001-subtitle {
-            font-size: 1.3rem;
-            color: #666666;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* BHAI - SEXY NEON BACKGROUND */
-        .new-001-gradient-section {
-            background-color: #050510; /* Deep dark background */
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(121, 40, 202, 0.4) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.4) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(0, 247, 255, 0.2) 0%, transparent 50%),
-                linear-gradient(135deg, rgba(5,5,16,0.9) 0%, rgba(20,10,35,0.8) 50%, rgba(5,5,16,0.9) 100%);
-            margin: 60px 0;
-            border-radius: 40px;
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                inset 0 -10px 20px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 0, 128, 0.5);
-        }
-
-        /* Wood Frame Effect */
-        .new-001-gradient-section::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border: 2px solid rgba(255, 255, 255, 0.05);
-            border-radius: 30px;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Animated Gradient Border */
-        .new-001-gradient-section::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            background: linear-gradient(45deg, 
-                #ff0080, 
-                #7928ca, 
-                #00f7ff,
-                #7928ca,
-                #ff0080);
-            background-size: 400% 400%;
-            border-radius: 43px;
-            z-index: -1;
-            opacity: 0.4;
-            animation: gradientBorder 8s ease infinite;
-        }
-
-        @keyframes gradientBorder {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Floating Elements */
-        .new-001-floating-circle {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
-            top: -150px;
-            right: -150px;
-            z-index: 0;
-        }
-
-        .new-001-floating-square {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(45deg, rgba(139, 115, 85, 0.1), rgba(121, 99, 72, 0.1));
-            bottom: -100px;
-            left: -100px;
-            transform: rotate(45deg);
-            z-index: 0;
-        }
-
-        /* Wood Knot Effects */
-        .new-001-wood-knot {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(121, 40, 202, 0.4) 0%, rgba(255, 0, 128, 0.3) 70%);
-            top: 30%;
-            left: 20%;
-            z-index: 0;
-        }
-
-        .new-001-wood-knot-2 {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(73, 55, 34, 0.5) 0%, rgba(53, 35, 14, 0.7) 70%);
-            bottom: 30%;
-            right: 25%;
-            z-index: 0;
-        }
-
-        /* Section Title */
-        .new-001-section-title {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 60px;
-            color: #fff;
-            position: relative;
-            z-index: 2;
-            text-shadow: 
-                2px 2px 4px rgba(0,0,0,0.5),
-                0 0 10px rgba(255, 255, 255, 0.1);
-            letter-spacing: 1px;
-        }
-
-        /* Section Description */
-        .new-001-section-desc {
-            text-align: center;
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 70px;
-            line-height: 1.7;
-            position: relative;
-            z-index: 2;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
-            padding: 0 20px;
-        }
-
-        /* Product Cards Grid - DESKTOP (4 columns) */
-        .new-001-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 35px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Minimal Product Card */
-        .new-001-product-card {
-            background-color: rgba(255, 255, 255, 0.97);
-            border-radius: 25px;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.25),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(5px);
-        }
-
-        .new-001-product-card:hover {
-            transform: translateY(-20px) scale(1.03);
-            box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.35),
-                0 0 0 1px rgba(255, 255, 255, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        /* Card Hover Effect */
-        .new-001-product-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #ff0080, #7928ca, #00f7ff);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-            transform-origin: left;
-        }
-
-        .new-001-product-card:hover::after {
-            transform: scaleX(1);
-        }
-
-        /* Image Container */
-        .new-001-image-container {
-            height: 240px;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-        }
-
-        .new-001-card-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.7s ease;
-        }
-
-        .new-001-product-card:hover .new-001-card-image {
-            transform: scale(1.1) rotate(1deg);
-        }
-
-        /* Badge */
-        .new-001-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: linear-gradient(135deg, #ff0080, #7928ca);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            z-index: 3;
-            box-shadow: 0 5px 15px rgba(93, 75, 54, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* Card Info */
-        .new-001-card-info {
-            padding: 30px;
-            text-align: center;
-        }
-
-        .new-001-card-category {
-            color: #ff0080;
-            font-size: 1rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            display: inline-block;
-            padding: 5px 15px;
-            background: rgba(255, 0, 128, 0.15);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 0, 128, 0.3);
-        }
-
-        /* Explore Button */
-        .new-001-explore-btn {
-            background: linear-gradient(135deg, #ff0080, #7928ca);
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 15px;
-            font-weight: 800;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
-            letter-spacing: 0.5px;
- 
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 5px 15px rgba(93, 75, 54, 0.3);
-        }
-
-        .new-001-explore-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(93, 75, 54, 0.5);
-            background: linear-gradient(135deg, #7928ca, #ff0080);
-        }
-
-        /* View All Button Container */
-        .new-001-view-all-container {
-            text-align: center;
-            margin-top: 80px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .new-001-view-all-btn {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            padding: 18px 50px;
-            border-radius: 15px;
-            font-weight: 800;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            letter-spacing: 1px;
-            backdrop-filter: blur(10px);
-            background: rgba(139, 115, 85, 0.2);
-        }
-
-        .new-001-view-all-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.7);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        /* MOBILE VIEW - 6 CARDS PER ROW */
-        @media (max-width: 768px) {
-            /* Mobile Grid - 6 cards per row */
-            .new-001-cards-grid {
-                display: grid;
-                grid-template-columns: repeat(6, 1fr);
-                gap: 10px;
-                overflow-x: auto;
-                padding-bottom: 20px;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: thin;
-                scrollbar-color: #8b7355 rgba(255, 255, 255, 0.1);
-            }
-
-            .new-001-cards-grid::-webkit-scrollbar {
-                height: 8px;
-            }
-
-            .new-001-cards-grid::-webkit-scrollbar-track {
-                background: rgba(255, 255, 255, 0.1);
-                border-radius: 10px;
-            }
-
-            .new-001-cards-grid::-webkit-scrollbar-thumb {
-                background: #8b7355;
-                border-radius: 10px;
-            }
-
-            /* Mobile Card Styling */
-            .new-001-product-card {
-                min-width: 160px;
-                border-radius: 20px;
-                margin-bottom: 5px;
-            }
-
-            .new-001-image-container {
-                height: 140px;
-            }
-
-            .new-001-card-info {
-                padding: 15px 10px;
-            }
-
-            .new-001-card-category {
-                font-size: 0.75rem;
-                padding: 4px 10px;
-                letter-spacing: 1px;
-            }
-
-            .new-001-badge {
-                font-size: 0.7rem;
-                padding: 5px 12px;
-                top: 12px;
-                left: 12px;
-            }
-
-            .new-001-explore-btn {
-                padding: 10px 15px;
-                font-size: 0.85rem;
-                margin-top: 10px;
-            }
-
-            .new-001-section-title {
-                font-size: 2.2rem;
-                margin-bottom: 40px;
-            }
-
-            .new-001-section-desc {
-                font-size: 1rem;
-                margin-bottom: 40px;
-            }
-
-            .new-001-gradient-section {
-                margin: 30px 10px;
-                border-radius: 30px;
-            }
-
-            .new-001-floating-circle {
-                width: 200px;
-                height: 200px;
-                top: -100px;
-                right: -100px;
-            }
-
-            .new-001-floating-square {
-                width: 150px;
-                height: 150px;
-                bottom: -75px;
-                left: -75px;
-            }
-
-            .new-001-view-all-container {
-                margin-top: 50px;
-            }
-
-            .new-001-view-all-btn {
-                padding: 15px 40px;
-                font-size: 1rem;
-            }
-        }
-
-        /* Tablet */
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .new-001-cards-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 25px;
-            }
-            
-            .new-001-main-title {
-                font-size: 2.5rem;
-            }
-        }
-
-        /* Small Mobile Adjustments */
-        @media (max-width: 480px) {
-            .new-001-cards-grid {
-                grid-template-columns: repeat(6, 1fr);
-                gap: 8px;
-            }
-
-            .new-001-product-card {
-                min-width: 165px;
-            }
-
-            .new-001-image-container {
-                height: 120px;
-            }
-
-            .new-001-section-title {
-                font-size: 1.8rem;
-                margin-bottom: 30px;
-            }
-
-            .new-001-section-desc {
-                font-size: 0.9rem;
-                margin-bottom: 30px;
-            }
-
-            .new-001-view-all-btn {
-                padding: 12px 30px;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Very Small Mobile */
-        @media (max-width: 360px) {
-            .new-001-cards-grid {
-                grid-template-columns: repeat(6, 1fr);
-                gap: 6px;
-            }
-
-            .new-001-product-card {
-                min-width: 130px;
-            }
-
-            .new-001-image-container {
-                height: 110px;
-            }
-
-            .new-001-card-info {
-                padding: 12px 8px;
-            }
-
-            .new-001-card-category {
-                font-size: 0.7rem;
-            }
-
-            .new-001-explore-btn {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-            }
-        }
-            .hero-video {
-  width: 100%;
-  overflow: hidden;
-}
-
-.hero-video video {
-  width: 100%;
-  max-height: 85vh;
-  object-fit: cover;
-}
-
-@media (max-width: 768px) {
-  .hero-video video {
-    max-height: 55vh;
-  }
-}
-
-        </style>
 
 
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
@@ -731,6 +48,77 @@
 
 
 
+
+<!-- ========== SARVIST FRYING HERO ========== -->
+<link rel="stylesheet" href="{% static 'css/hero_smoke.css' %}">
+<section class="sarvist-frying-hero">
+    <!-- Fire Background Layers -->
+    <div class="fire-layer-1"></div>
+    <div class="fire-layer-2"></div>
+    
+    <!-- Canvas for Smoke and Flying Sparks (Oil popping) -->
+    
+    
+    <!-- Sizzling Food Elements -->
+    <div class="food-sizzle" style="left:15%;animation-delay:0s;font-size:2.5rem;">🔥</div>
+    <div class="food-sizzle" style="left:30%;animation-delay:1.5s;font-size:2rem;">💥</div>
+    <div class="food-sizzle" style="left:50%;animation-delay:0.7s;font-size:2.2rem;">✨</div>
+    <div class="food-sizzle" style="left:75%;animation-delay:2.2s;font-size:1.8rem;">🔥</div>
+    <div class="food-sizzle" style="left:85%;animation-delay:1.1s;font-size:2.1rem;">💥</div>
+
+    <div class="frying-hero-content">
+        <div class="frying-badge">
+            <i class="fas fa-fire-flame-curved"></i>
+            Sizzling Hot Delivery
+        </div>
+
+        <h1 class="frying-title">
+            Hot from the Pan.<br>
+            <span class="fire-text">Straight to You.</span>
+        </h1>
+
+        <p class="frying-subtitle">
+            Experience the thrill of authentic Indian street food and rich restaurant gravies. 
+            Prepared fresh, sizzling hot, and delivered at lightning speed.
+        </p>
+
+        <div class="frying-cta">
+            <a href="/products/" class="btn-fire">
+                <i class="fas fa-utensils"></i> Order Now
+            </a>
+            <a href="/products/" class="btn-smoke">
+                <i class="fas fa-pepper-hot"></i> Today's Specials
+            </a>
+        </div>
+        
+        <div class="frying-stats">
+            <div class="sarvist-stat">
+                <div class="f-stat-number">500+</div>
+                <div class="f-stat-label">Dishes</div>
+            </div>
+            <div class="f-stat-div"></div>
+            <div class="sarvist-stat">
+                <div class="f-stat-number">25K+</div>
+                <div class="f-stat-label">Happy Foodies</div>
+            </div>
+            <div class="f-stat-div"></div>
+            <div class="sarvist-stat">
+                <div class="f-stat-number">4.9★</div>
+                <div class="f-stat-label">Taste Rating</div>
+            </div>
+            <div class="f-stat-div"></div>
+            <div class="sarvist-stat">
+                <div class="f-stat-number">30-Min</div>
+                <div class="f-stat-label">Delivery</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+</script>
+<!-- ========== END FRYING HERO ========== -->
+
 <!-- ========== HERO SECTION ========== -->
  
 <div id="festival-slides-container" class="mb-1 text-center">
@@ -768,8 +156,8 @@
             <!-- Desktop: 4 columns, Mobile: 6 cards per row -->
             <div class="new-001-cards-grid">
                 <!-- Row 1 - 6 Cards -->{% for pt in product_types %}
-                <article class="new-001-product-card">
-                    <div class="new-001-image-container">
+                <article class="food-card">
+                    <div class="food-card-img-wrap">
                         
                         <img src="{{ pt.image.url|to_webp }}" alt="Camera" class="new-001-card-image">
                     </div>
@@ -840,14 +228,14 @@
                  <img loading="lazy" src="{{ category.image.url|to_webp }}" alt="{{ category.name }}" class="category-image">
              
                 {% else %}
-                    <img src="/static/images/no-image.png" class="tq12-card-img" alt="No image available">
+                    <img src="/static/images/no-image.png" class="food-card-img" alt="No image available">
                 {% endif %}
 
 
                      
                         
                         <div class="category-overlay">
-                            <span class="shop-now-text">Shop Now</span>
+                            <span class="shop-now-text">🍽️ Order Now</span>
                            
                         </div>
                     </div>
@@ -894,25 +282,25 @@
                 {% if product.thumbnail %}
 
                     <img src="{{ product.thumbnail.url|to_webp }}"
-                         class="tq12-card-img"
+                         class="food-card-img"
                          alt="{{ product.name }}">
 
                 {% elif product.image %}
 
                     <img src="{{ product.image.url|to_webp }}"
-                         class="tq12-card-img"
+                         class="food-card-img"
                          alt="{{ product.name }}">
 
                 {% elif first_color and first_color.image1 %}
 
                     <img src="{{ first_color.image1.url|to_webp }}"
-                         class="tq12-card-img"
+                         class="food-card-img"
                          alt="{{ product.name }}">
 
                 {% else %}
 
                     <img src="/static/images/no-image.png"
-                         class="tq12-card-img"
+                         class="food-card-img"
                          alt="No image available">
 
                 {% endif %}
@@ -995,35 +383,35 @@
 
 <!-- ===============suggested for you ================== -->
 
-<section class="fpsc1-product-carousel-section">
-  <div class="fpsc1-product-carousel-container">
-    <h3 class="fpsc1-carousel-title">Suggested for You</h3>
+<section class="food-products-section">
+  <div class="food-products-container">
+    <h3 class="food-section-title">Suggested for You</h3>
     
-    <div class="fpsc1-product-carousel fpsc1-owl-theme">
+    <div class="food-products-grid fpsc1-owl-theme">
       
       <div class="fpsc1-carousel-track">
     
           {% for prod in suggested_products %}
         <!-- Product 5 -->
-        <div class="fpsc1-product-card">
-          <div class="fpsc1-product-image">
+        <div class="food-card">
+          <div class="food-card-img-wrap">
      {% with first_color=prod.colors.first %}
     {% if prod.thumbnail %}
-        <img src="{{ prod.thumbnail.url|to_webp }}" class="tq12-card-img" alt="{{ prod.name }}">
+        <img src="{{ prod.thumbnail.url|to_webp }}" class="food-card-img" alt="{{ prod.name }}">
 
     {% elif prod.image %}
-        <img src="{{ prod.image.url|to_webp }}" class="tq12-card-img" alt="{{ prod.name }}">
+        <img src="{{ prod.image.url|to_webp }}" class="food-card-img" alt="{{ prod.name }}">
 
     {% elif first_color and first_color.image1 %}
-        <img src="{{ first_color.image1.url|to_webp }}" class="tq12-card-img" alt="{{ prod.name }}">
+        <img src="{{ first_color.image1.url|to_webp }}" class="food-card-img" alt="{{ prod.name }}">
 
     {% else %}
-        <img src="/static/images/no-image.png" class="tq12-card-img" alt="No image">
+        <img src="/static/images/no-image.png" class="food-card-img" alt="No image">
     {% endif %}
 {% endwith %}
           </div>
           <div class="fpsc1-product-details">
-            <h4 class="fpsc1-product-title">{{ prod.name }}</h4>
+            <h4 class="food-card-title">{{ prod.name }}</h4>
             <div class="fpsc1-price-container">
                   {% with prod.get_default_variant as variant %} {% if variant %}
               <span class="fpsc1-current-price">₹{{ variant.price_after_discount|floatformat:2 }}</span>
@@ -1063,22 +451,22 @@
 
                 {% if product.thumbnail %}
                     <img src="{{ product.thumbnail.url|to_webp }}" 
-                         class="tq12-card-img" 
+                         class="food-card-img" 
                          alt="{{ product.name }}">
 
                 {% elif product.image %}
                     <img src="{{ product.image.url|to_webp }}" 
-                         class="tq12-card-img" 
+                         class="food-card-img" 
                          alt="{{ product.name }}">
 
                 {% elif first_color and first_color.image1 %}
                     <img src="{{ first_color.image1.url|to_webp }}" 
-                         class="tq12-card-img" 
+                         class="food-card-img" 
                          alt="{{ product.name }}">
 
                 {% else %}
                     <img src="/static/images/no-image.png" 
-                         class="tq12-card-img" 
+                         class="food-card-img" 
                          alt="No image available">
                 {% endif %}
 
@@ -1315,7 +703,7 @@
                 <div class="banner-content">
                     <h3>{{ collection.womens_heading }}</h3>
                     <p>{{ collection.womens_paragraph }}</p>
-                    <a href="{% url 'product:collection_view' 'women' %}" style="text-decoration: none;" class="shoe-btn">Shop Now</a>
+                    <a href="{% url 'product:collection_view' 'women' %}" style="text-decoration: none;" class="shoe-btn">🍽️ Order Now</a>
                 </div>
             </div>
 
@@ -1329,7 +717,7 @@
                 <div class="banner-content">
                     <h3>{{ collection.mens_heading }}</h3>
                     <p>{{ collection.mens_paragraph }}</p>
-                    <a href="{% url 'product:collection_view' 'men' %}" style="text-decoration: none;" class="shoe-btn">Shop Now</a>
+                    <a href="{% url 'product:collection_view' 'men' %}" style="text-decoration: none;" class="shoe-btn">🍽️ Order Now</a>
                 </div>
             </div>
 
@@ -1343,7 +731,7 @@
                 <div class="banner-content">
                     <h3>{{ collection.accessories_heading }}</h3>
                     <p>{{ collection.accessories_paragraph }}</p>
-                    <a href="{% url 'product:collection_view' 'accessories' %}" style="text-decoration: none;" class="shoe-btn">Shop Now</a>
+                    <a href="{% url 'product:collection_view' 'accessories' %}" style="text-decoration: none;" class="shoe-btn">🍽️ Order Now</a>
                 </div>
             </div>
 
